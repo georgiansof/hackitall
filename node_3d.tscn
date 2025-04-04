@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dy32wdyngugpg"]
+
+[ext_resource type="PackedScene" uid="uid://3jm53qpv6sx4" path="res://Player.tscn" id="1_a202f"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_a202f"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(0.580459, 0.979467, 0.678245, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a202f"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.486275, 1, 1, 1)
+
+[node name="root" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a202f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32511, 0)
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("HeightMapShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.61924, 0)
+omni_range = 10.2
+omni_attenuation = 0.238
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50696, 3.77983)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
