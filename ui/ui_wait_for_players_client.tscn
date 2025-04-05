@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://l3c8hqu1rl7x"]
+
+[node name="UI_WaitForPlayersClient" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(48.32, 27.4)
+color = Color(0.502, 0.491446, 0.662539, 1)
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 84.0
+offset_top = 51.0
+offset_right = 235.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.56962, 6.56962)
+text = "Waiting for players."
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 303.0
+offset_right = 999.0
+offset_bottom = 623.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 236.0
+offset_right = 185.0
+offset_bottom = 259.0
+scale = Vector2(1.96, 1.96)
+text = "Connected:"

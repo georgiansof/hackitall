@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d3qcub0c78vun"]
+
+[node name="ServerChooser" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(48.32, 27.4)
+color = Color(0.502, 0.491446, 0.662539, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 47.0
+offset_right = 1082.0
+offset_bottom = 598.0
+columns = 2
+
+[node name="ErrorLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 895.0
+offset_top = 17.0
+offset_right = 987.0
+offset_bottom = 40.0
+text = "placeholder"
