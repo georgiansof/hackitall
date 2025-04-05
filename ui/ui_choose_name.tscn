@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyi2ei2nqiku6"]
+
+[ext_resource type="Script" uid="uid://dfhdord3t4x0h" path="res://ui/scripts/ui_choose_name.gd" id="1_6432r"]
+
+[node name="UI_ChooseName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6432r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(48.32, 27.4)
+color = Color(0.502, 0.491446, 0.662539, 1)
+
+[node name="ButtonNext" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 470.0
+offset_top = 391.0
+offset_right = 515.0
+offset_bottom = 422.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(4.76, 4.76)
+text = "Next"
+
+[node name="EnterUsername" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 568.0
+offset_top = 201.0
+offset_right = -1223.0
+offset_bottom = -856.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.56962, 6.56962)
+text = "Enter username:"
+
+[node name="UsernameBox" type="LineEdit" parent="."]
+layout_mode = 1
+offset_left = 293.0
+offset_top = 246.0
+offset_right = 501.0
+offset_bottom = 277.0
+scale = Vector2(2.76, 2.76)
+alignment = 1
+
+[connection signal="pressed" from="ButtonNext" to="." method="_on_button_next_pressed"]

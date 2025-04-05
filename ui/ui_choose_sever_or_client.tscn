@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgn0otxewm16g"]
+
+[ext_resource type="Script" uid="uid://diioorc8gds8x" path="res://ui/scripts/ui_choose_sever_or_client.gd" id="1_pkykf"]
+
+[node name="ConnectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkykf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(48.32, 27.4)
+color = Color(0.502, 0.491446, 0.662539, 1)
+
+[node name="CreateServer" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 154.0
+offset_top = 436.0
+offset_right = 275.0
+offset_bottom = 467.0
+grow_vertical = 2
+scale = Vector2(2.64, 2.64)
+text = "Create Server"
+
+[node name="JoinServer" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 676.0
+offset_top = 435.0
+offset_right = 790.0
+offset_bottom = 466.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2.73809, 2.51038)
+text = "Join Server"
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 281.0
+offset_top = 87.0
+offset_right = 378.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.56962, 6.56962)
+text = "GAME NAME"
+
+[connection signal="pressed" from="CreateServer" to="." method="_on_create_server_pressed"]
+[connection signal="pressed" from="JoinServer" to="." method="_on_join_server_pressed"]

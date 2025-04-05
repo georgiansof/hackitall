@@ -37,12 +37,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.61924, 0)
 omni_range = 10.2
 omni_attenuation = 0.238
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="RandomSphere" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50696, 3.77983)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RandomSphere"]
 shape = SubResource("SphereShape3D_a202f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RandomSphere"]
 mesh = SubResource("SphereMesh_noarx")
 surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
