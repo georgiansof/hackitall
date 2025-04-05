@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcv21gw6ut3ds"]
+
+[ext_resource type="Script" uid="uid://beq2mg4cemn6u" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cgn0otxewm16g" path="res://ui/ui_choose_sever_or_client.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cyi2ei2nqiku6" path="res://ui/ui_choose_name.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://fncj2se8eosb" path="res://ui/ui_wait_for_players.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://d3qcub0c78vun" path="res://ui/ui_discover_servers.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://l3c8hqu1rl7x" path="res://ui/ui_wait_for_players_client.tscn" id="6_7mycd"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_0xm2m")
+
+[node name="UI_WaitForPlayers" parent="." instance=ExtResource("3_h2yge")]
+visible = false
+
+[node name="UI_WaitForPlayersClient" parent="." instance=ExtResource("6_7mycd")]
+visible = false
+
+[node name="UI_DiscoverServers" parent="." instance=ExtResource("3_lquwl")]
+visible = false
+
+[node name="UI_ChooseServerOrClient" parent="." instance=ExtResource("1_ig7tw")]
+visible = false
+
+[node name="UI_ChooseName" parent="." instance=ExtResource("3_1bvp3")]
+visible = false

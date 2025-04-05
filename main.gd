@@ -1,6 +1,6 @@
 extends Node3D
 
-enum State {CHOOSING_NAME = 0, CHOOSING_ROLE = 1, CREATE_SERVER = 2, JOIN_SERVER = 3, WAITING_FOR_PLAYERS = 4 }
+enum State {CHOOSING_NAME = 0, CHOOSING_ROLE = 1, CREATE_SERVER = 2, JOIN_SERVER = 3, WAITING_FOR_PLAYERS = 4, PLAYING = 5}
 enum Authority {SERVER, CLIENT, UNASSIGNED}
 
 var players = []
@@ -10,6 +10,9 @@ var players = []
 
 @export var PORT : int = 25569
 @export var MAX_CLIENTS : int = 8
+
+var scene = preload("res://world.tscn")
+var player = preload("res://assets/player/Player.tscn")
 
 var username : String = ""
 
@@ -22,6 +25,7 @@ var udp : PacketPeerUDP
 @onready var UI = [$UI_ChooseName, $UI_ChooseServerOrClient, $UI_WaitForPlayers]
 
 func _ready():
+	self.add_child(scene.instantiate())
 	for ui_elem in UI:
 		ui_elem.visible = true
 	pass
@@ -155,3 +159,35 @@ func render_playerlist():
 			var player_label = Label.new()
 			player_label.text = player_name
 			grid.add_child(player_label)
+			
+func start_playing():
+	state = State.PLAYING
+	$UI_WaitForPlayers.visible = false
+	self.add_child(scene.instantiate())
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	rpc("start_playing_client")
+	
+	var spawn_direction = (get_node("root/floor/Sepultura2").position - get_node("root/WorldCenter").position).normalized()
+	var spawn_position = get_node("root/floor/Sepultura2").position - spawn_direction * 20
+	
+	var created_player = player.instantiate()
+	created_player.position = spawn_position
+	self.add_child(created_player)
+
+@rpc("authority")
+func start_playing_client():
+	state = State.PLAYING
+	$UI_WaitForPlayersClient.visible = false
+	self.add_child(scene.instantiate())
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var index = players.find(username) + 1
+	var spawnpoint_name = "Sepultura" + str(index)
+	var spawnpoint_position = get_node("root/floor").get_node(spawnpoint_name).position
+	var spawn_direction = (get_node("root/floor").get_node(spawnpoint_name).position - get_node("root/WorldCenter").position).normalized()
+	
+	var adjusted_spawnpoint_position = spawnpoint_position - spawn_direction * 10
+	var created_player = player.instantiate()
+	created_player.position = adjusted_spawnpoint_position
+	self.add_child(created_player)
+	
+	

@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://fncj2se8eosb"]
+[gd_scene load_steps=2 format=3 uid="uid://fncj2se8eosb"]
+
+[ext_resource type="Script" uid="uid://ckp5fak3bbyub" path="res://ui/ui_wait_for_players.gd" id="1_4jx2k"]
 
 [node name="UI_WaitForPlayers" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_4jx2k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -49,3 +52,5 @@ offset_right = 587.0
 offset_bottom = 592.0
 scale = Vector2(2, 2)
 text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

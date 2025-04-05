@@ -7,9 +7,6 @@ extends CharacterBody3D
 var gravity := 10
 var look_vertical := 0.0
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
@@ -28,6 +25,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		direction += transform.basis.x
 
+	direction *= (-1)
 	direction = direction.normalized()
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
